@@ -1,0 +1,43 @@
+﻿@model EnviarEmailSmtp.Models.ForgotPasswordModel
+@{
+    ViewData["Title"] = "RecuperarSenha";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4 offset-4">
+            @if (Model?.EmailSent == true)
+            {
+                <div class="alert alert-success" role="alert">
+                    <p>
+                        Se você está registrado conosco, <br />
+                        Enviamos um e-mail no seu ID de e-mail registrado
+                    </p>
+                </div>
+            }
+            else
+            {
+                <p>Esqueceu sua senha? Não se preocupe, você pode redefini-lo facilmente.</p>
+                <form asp-action="RecuperarSenha">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Continue" class="btn btn-primary" />
+                    </div>
+                </form>
+            }
+            <div>
+                <p>Voltar para  <a asp-action="Login" asp-controller="Autenticacao">Login</a></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
